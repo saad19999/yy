@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>لوحة التحكم</title>
+<style>
+body{font-family:Cairo,Tahoma,sans-serif;background:#fdeef3;margin:0;padding:16px;color:#1e2a52}
+.box{max-width:520px;margin:0 auto;background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 24px rgba(214,36,110,.12)}
+h2{margin:0 0 14px}input,select,button{width:100%;box-sizing:border-box;padding:12px;margin-bottom:10px;border:1px solid #f0c3d4;border-radius:12px;font:inherit}
+button{background:#d6246e;color:#fff;border:0;font-weight:700;cursor:pointer}button:disabled{opacity:.5}
+#prev{max-height:180px;border-radius:12px;display:none;margin:0 auto 10px}
+.it{display:flex;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:8px 0}.it img{width:50px;height:50px;border-radius:10px;object-fit:cover}
+.it div{flex:1;font-size:.9rem}.it button{width:auto;padding:6px 12px;margin:0;background:#999}
+#msg{text-align:center;font-weight:700;color:#d6246e}
+</style></head><body><div class="box">
+<div id="app"><h2>➕ إضافة بوكيه</h2>
+<input type="file" id="file" accept="image/*"><img id="prev">
+<input id="ar" placeholder="الاسم / الوصف"><input id="en" placeholder="الاسم بالإنجليزي (اختياري)">
+<input id="cat" list="cats" placeholder="النوع (مثال: بوكيهات جوري)"><datalist id="cats"></datalist>
+<input id="price" type="number" placeholder="السعر بالجنيه"><input id="old" type="number" placeholder="السعر قبل الخصم (اختياري — يظهر كعرض)">
+<button id="add" onclick="add()">رفع المنتج</button><div id="msg"></div>
+<h2 style="margin-top:22px">المنتجات الحالية</h2><div id="list"></div></div></div>
+<script>
+const $=i=>document.getElementById(i);
+const H=()=>({'content-type':'application/json'});
+async function load(){const l=await (await fetch('/api/products')).json();
+ $('list').innerHTML=l.length?l.map(p=>`<div class="it"><img src="${p.img}"><div>${p.ar}<br><b>${p.price} ج.م</b> · ${p.cat}</div><button onclick="del('${p.id}')">حذف</button></div>`).join(''):'<p>لا توجد منتجات بعد</p>';
+ $('cats').innerHTML=[...new Set(l.map(p=>p.cat))].map(c=>`<option value="${c}">`).join('')}
+function shrink(f){return new Promise(res=>{const i=new Image();i.onload=()=>{const s=Math.min(1,900/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.8))};i.src=URL.createObjectURL(f)})}
+$('file').onchange=async e=>{if(e.target.files[0]){$('prev').src=await shrink(e.target.files[0]);$('prev').style.display='block'}};
+async function add(){if(!$('prev').src||!$('ar').value||!$('cat').value||!$('price').value)return alert('اختر صورة واكتب الاسم والنوع والسعر');
+ $('add').disabled=true;$('msg').textContent='جاري الرفع...';
+ const r=await fetch('/api/products',{method:'POST',headers:H(),body:JSON.stringify({image:$('prev').src.split(',')[1],ar:$('ar').value,en:$('en').value,cat:$('cat').value,price:$('price').value,old:$('old').value})});
+ $('add').disabled=false;if(r.ok){$('msg').textContent='✅ تمت الإضافة';['file','ar','en','price','old'].forEach(i=>$(i).value='');$('prev').style.display='none';load()}else $('msg').textContent='❌ فشل الرفع'}
+async function del(id){if(confirm('حذف المنتج؟')){await fetch('/api/products?id='+id,{method:'DELETE',headers:H()});load()}}
+load();
+</script></body></html>

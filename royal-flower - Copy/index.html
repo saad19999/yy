@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Flower | رويال فلاور - Kings of Flowers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e2a52; --pink:#d6246e; --pink-soft:#fdeef3; --pink-mid:#f9d7e4;
+  --white:#ffffff; --gold:#c9a24b; --text:#3a3f58; --shadow:0 10px 30px rgba(214,36,110,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--pink-soft);color:var(--text);line-height:1.7}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1180px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{color:var(--navy);font-weight:900}
+.section{padding:70px 0}
+.section-title{text-align:center;font-size:2rem;margin-bottom:6px}
+.section-sub{text-align:center;color:var(--pink);margin-bottom:40px;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;padding:13px 34px;border-radius:50px;font-weight:700;box-shadow:0 8px 20px rgba(214,36,110,.35);transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(214,36,110,.45)}
+.btn.ghost{background:#fff;color:var(--pink);border:2px solid var(--pink);box-shadow:none}
+/* topbar */
+.topbar{background:var(--navy);color:#fff;font-size:.85rem}
+.topbar .container{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.topbar span{display:inline-flex;align-items:center;gap:6px}
+/* header */
+header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);z-index:50;box-shadow:0 2px 14px rgba(30,42,82,.07)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.logo{display:flex;flex-direction:column;line-height:1.1}
+.logo .name{font-family:'Great Vibes',cursive;font-size:2rem;color:var(--navy)}
+.logo .tag{font-size:.72rem;letter-spacing:2px;color:var(--pink);font-weight:700}
+nav.links{display:flex;gap:22px;font-weight:600;font-size:.95rem}
+nav.links a:hover{color:var(--pink)}
+.lang-pill{display:flex;border:2px solid var(--pink);border-radius:50px;overflow:hidden;font-weight:700;font-size:.85rem}
+.lang-pill button{border:0;background:transparent;padding:6px 16px;cursor:pointer;color:var(--pink);font-family:inherit;font-weight:700}
+.lang-pill button.active{background:var(--pink);color:#fff}
+/* hero */
+.hero{padding:60px 0 70px}
+.hero .container{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+.hero h1{font-size:2.9rem;line-height:1.35}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p{margin:18px 0 26px;font-size:1.1rem}
+.hero-img{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);transform:rotate(-2deg)}
+[dir="ltr"] .hero-img{transform:rotate(2deg)}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.chip{background:#fff;border-radius:50px;padding:8px 18px;font-size:.85rem;font-weight:700;color:var(--navy);box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:6px}
+.chip .star{color:#f5a623}
+svg.icn{width:1.05em;height:1.05em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.18em}
+svg.icn.fill-gold{fill:#f5a623;stroke:none}
+.topbar svg.icn{width:13px;height:13px}
+.feature .ic{display:block;margin-bottom:6px}
+.feature .ic svg{width:36px;height:36px;stroke:var(--pink)}
+.visit li .ic svg{width:18px;height:18px;stroke:var(--pink);flex-shrink:0;margin-top:4px}
+.chip svg.icn{stroke:var(--pink)}
+.contact-list svg.icn{width:15px;height:15px;stroke:var(--pink)}
+.btn svg.icn{width:17px;height:17px}
+/* features */
+.features{background:#fff;padding:26px 0}
+.features .container{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+.feature{font-weight:700;color:var(--navy)}
+.feature .ic{font-size:1.6rem;display:block;margin-bottom:4px}
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.cat{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);text-align:center;transition:.25s}
+.cat:hover{transform:translateY(-6px)}
+.cat img{height:150px;width:100%;object-fit:cover}
+.cat .t{padding:12px 8px;font-weight:700;color:var(--navy);font-size:.95rem}
+/* products */
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prod{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.prod:hover{transform:translateY(-6px)}
+.prod img{height:230px;width:100%;object-fit:cover}
+.prod .body{padding:16px}
+.prod .name{font-weight:700;color:var(--navy);margin-bottom:4px}
+.prod .price{color:var(--pink);font-weight:900;font-size:1.15rem;margin-bottom:12px}
+.prod .order{width:100%;justify-content:center;padding:11px;font-size:.95rem}
+/* visit */
+.visit{background:#fff}
+.visit .container{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.visit img{border-radius:24px;box-shadow:var(--shadow)}
+.visit h2{font-size:1.9rem;margin-bottom:14px}
+.visit ul{list-style:none;margin:18px 0 26px}
+.visit li{margin-bottom:12px;font-weight:600;display:flex;gap:10px;align-items:flex-start}
+.visit li .ic{color:var(--pink)}
+/* testimonials */
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{background:#fff;border-radius:22px;padding:26px;box-shadow:var(--shadow);position:relative}
+.testi::before{content:'”';position:absolute;top:8px;inset-inline-start:20px;font-size:4rem;color:var(--pink-mid);font-family:serif}
+.testi p{margin:22px 0 16px;font-weight:600}
+.testi .who{display:flex;align-items:center;gap:10px}
+.testi .av{width:42px;height:42px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.testi .stars{color:#f5a623;font-size:.85rem}
+/* footer */
+footer{background:var(--navy);color:#fff;padding:56px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;gap:36px}
+footer .name{font-family:'Great Vibes',cursive;font-size:2.1rem;color:#fff}
+footer .tag{color:var(--pink-mid);font-size:.75rem;letter-spacing:2px;font-weight:700}
+footer p{color:#c6cce4;font-size:.95rem;margin-top:10px}
+footer h4{color:#fff;margin-bottom:14px;font-size:1.05rem}
+.socials{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+.socials a{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;transition:.25s}
+.socials a:hover{background:var(--pink);transform:translateY(-3px)}
+.socials svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pay-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.35);border-radius:14px;padding:12px 18px;margin-top:8px}
+.pay-badge b{color:#fff}
+.pay-badge span{color:#c6cce4;font-size:.85rem;display:block}
+.contact-list{list-style:none}
+.contact-list li{margin-bottom:10px;color:#c6cce4;font-size:.95rem}
+.contact-list a:hover{color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding:18px 0;text-align:center;font-size:.85rem;color:#9aa3c7}
+@media(max-width:960px){
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .prods{grid-template-columns:repeat(2,1fr)}
+  .hero .container,.visit .container{grid-template-columns:1fr}
+  nav.links{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  .features .container{grid-template-columns:1fr}
+  .hero h1{font-size:2.1rem}
+}
+
+.offer{background:linear-gradient(90deg,var(--pink),#f0568f);color:#fff;text-align:center;padding:9px 14px;font-weight:700;font-size:.95rem}
+.cart-btn{position:relative;border:0;background:var(--pink-soft);color:var(--pink);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-inline-start:auto}
+.cart-btn svg{width:22px;height:22px}.cart-btn b{position:absolute;top:-4px;inset-inline-end:-4px;background:var(--navy);color:#fff;font-size:.7rem;border-radius:50px;min-width:20px;height:20px;display:flex;align-items:center;justify-content:center}
+.offers{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px}
+.offer-card{background:#fff;border:2px dashed var(--pink-mid);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.offer-card.big{background:linear-gradient(135deg,var(--navy),#34437d);border:0;color:#fff}.offer-card.big h3{color:#fff;font-size:1.5rem}
+.offer-card h3{margin-bottom:6px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.filters button{border:2px solid var(--pink);background:#fff;color:var(--pink);padding:7px 20px;border-radius:50px;font:700 .9rem Cairo,sans-serif;cursor:pointer}
+.filters button.on{background:var(--pink);color:#fff}
+.prod{position:relative}.prod .badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--gold);color:#fff;font-size:.75rem;font-weight:700;padding:3px 12px;border-radius:50px}
+.prod .old{color:#9aa0b8;text-decoration:line-through;font-weight:600;font-size:.9rem;margin-inline-start:6px}
+.prod .order{border:0;cursor:pointer;font-family:inherit}
+.overlay{position:fixed;inset:0;background:rgba(30,42,82,.5);opacity:0;pointer-events:none;transition:.25s;z-index:90}.overlay.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;inset-inline-end:0;width:min(400px,100%);background:#fff;z-index:100;display:flex;flex-direction:column;transform:translateX(100%);transition:.3s}
+[dir="rtl"] .drawer{transform:translateX(-100%)}.drawer.on{transform:none!important}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--pink-mid)}.dh button{border:0;background:none;font-size:1.3rem;cursor:pointer}
+.ship{padding:14px 20px;background:var(--pink-soft);font-weight:700;font-size:.9rem;color:var(--navy)}
+.bar{height:8px;background:#fff;border-radius:8px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);transition:.3s}
+.items{flex:1;overflow:auto;padding:10px 20px}
+.it{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #f1f1f6}.it img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+.it .n{flex:1;font-weight:700;font-size:.9rem;color:var(--navy)}.it .q{display:flex;gap:6px;align-items:center}
+.it .q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--pink);background:#fff;color:var(--pink);cursor:pointer;font-weight:900}
+.df{padding:16px 20px;border-top:1px solid var(--pink-mid)}.row{display:flex;justify-content:space-between;margin-bottom:4px}.row.tot{font-size:1.15rem;color:var(--pink);font-weight:900}
+@media(max-width:960px){.offers{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span data-i18n="tb_addr"></span></span>
+    <span><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="tb_hours"></span></span>
+    <span><svg class="icn fill-gold" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg> <span data-i18n="tb_rating"></span></span>
+  </div>
+</div>
+
+<div class="offer"><span data-i18n="offer_bar"></span></div>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">
+      <span class="name">Royal Flower</span>
+      <span class="tag">KINGS OF FLOWERS · 01101185058</span>
+    </a>
+    <nav class="links">
+      <a href="#home" data-i18n="nav_home"></a>
+      <a href="#products" data-i18n="nav_products"></a>
+      <a href="#occasions" data-i18n="nav_occasions"></a>
+      <a href="#visit" data-i18n="nav_visit"></a>
+      <a href="#contact" data-i18n="nav_contact"></a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart(true)" aria-label="cart"><svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.6 11.5a1 1 0 0 0 1 .75h8.7a1 1 0 0 0 1-.8L20 8H6"/></svg><b id="cartCount">0</b></button>
+    <div class="lang-pill">
+      <button id="btnAr" class="active" onclick="setLang('ar')">عربي</button>
+      <button id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div>
+      <h1 data-i18n-html="hero_title"></h1>
+      <p data-i18n="hero_sub"></p>
+      <a class="btn" href="https://wa.me/201101185058" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.6 11.5a1 1 0 0 0 1 .75h8.7a1 1 0 0 0 1-.8L20 8H6"/></svg> <span data-i18n="hero_cta"></span></a>
+      <div class="hero-badges">
+        <span class="chip"><svg class="icn fill-gold" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg> <span data-i18n="chip_rating"></span></span>
+        <span class="chip"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="chip_hours"></span></span>
+        <span class="chip"><svg class="icn" viewBox="0 0 24 24"><path d="M1 6h13v10H1z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg> <span data-i18n="chip_delivery"></span></span>
+      </div>
+    </div>
+    <div class="hero-img"><img src="images/hero.jpg" alt="Royal Flower bouquet"></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="feature"><span class="ic"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5"/><circle cx="12" cy="8" r="1.8"/><path d="M12 12.5V21"/><path d="M12 17c-2.5 0-4.5-1.5-5-3.5 2.5 0 4.5 1 5 3.5zm0 0c2.5 0 4.5-1.5 5-3.5-2.5 0-4.5 1-5 3.5z"/></svg></span><span data-i18n="f1"></span></div>
+    <div class="feature"><span class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M1 6h13v10H1z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></span><span data-i18n="f2"></span></div>
+    <div class="feature"><span class="ic"><svg class="icn" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v8h14v-8"/><path d="M12 8v12"/><path d="M12 8s-1.5-5-4.5-4S7 8 12 8zm0 0s1.5-5 4.5-4S17 8 12 8z"/></svg></span><span data-i18n="f3"></span></div>
+  </div>
+</section>
+
+<section class="section" id="occasions">
+  <div class="container">
+    <h2 class="section-title" data-i18n="cats_title"></h2>
+    <p class="section-sub" data-i18n="cats_sub"></p>
+    <div class="cats">
+      <div class="cat"><img src="images/cat1.jpg" alt=""><div class="t" data-i18n="cat1"></div></div>
+      <div class="cat"><img src="images/cat2.jpg" alt=""><div class="t" data-i18n="cat2"></div></div>
+      <div class="cat"><img src="images/cat3.jpg" alt=""><div class="t" data-i18n="cat3"></div></div>
+      <div class="cat"><img src="images/cat4.jpg" alt=""><div class="t" data-i18n="cat4"></div></div>
+      <div class="cat"><img src="images/cat5.jpg" alt=""><div class="t" data-i18n="cat5"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0"><div class="container"><div class="offers">
+<div class="offer-card big"><h3 data-i18n="o1t"></h3><p data-i18n="o1p"></p></div>
+<div class="offer-card"><h3 data-i18n="o2t"></h3><p data-i18n="o2p"></p></div>
+<div class="offer-card"><h3 data-i18n="o3t"></h3><p data-i18n="o3p"></p></div>
+</div></div></section>
+<section class="section" id="products" style="background:#fff">
+  <div class="container">
+    <h2 class="section-title" data-i18n="prods_title"></h2>
+    <p class="section-sub" data-i18n="prods_sub"></p>
+    <div class="filters" id="filters"></div>
+    <div class="prods" id="prodGrid"></div>
+  </div>
+  </div>
+</section>
+
+<section class="section visit" id="visit">
+  <div class="container">
+    <div>
+      <h2 data-i18n="visit_title"></h2>
+      <p data-i18n="visit_text"></p>
+      <ul>
+        <li><span class="ic"><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span data-i18n="visit_addr"></span></li>
+        <li><span class="ic"><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><span data-i18n="visit_hours"></span></li>
+        <li><span class="ic"><svg class="icn fill-gold" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg></span><span data-i18n="visit_rating"></span></li>
+      </ul>
+      <a class="btn ghost" href="https://maps.app.goo.gl/CxFvnMWE2iqQfrPHA" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span data-i18n="visit_cta"></span></a>
+    </div>
+    <img src="images/visit.jpg" alt="Royal Flower shop">
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title" data-i18n="testi_title"></h2>
+    <p class="section-sub" data-i18n="testi_sub"></p>
+    <div class="testis">
+      <div class="testi"><p data-i18n="t1"></p><div class="who"><div class="av" data-i18n="t1a"></div><div><div data-i18n="t1n" style="font-weight:700;color:var(--navy)"></div><div class="stars">★★★★★</div></div></div></div>
+      <div class="testi"><p data-i18n="t2"></p><div class="who"><div class="av" data-i18n="t2a"></div><div><div data-i18n="t2n" style="font-weight:700;color:var(--navy)"></div><div class="stars">★★★★★</div></div></div></div>
+      <div class="testi"><p data-i18n="t3"></p><div class="who"><div class="av" data-i18n="t3a"></div><div><div data-i18n="t3n" style="font-weight:700;color:var(--navy)"></div><div class="stars">★★★★★</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="name">Royal Flower</div>
+        <div class="tag">KINGS OF FLOWERS</div>
+        <p data-i18n="foot_about"></p>
+        <div class="pay-badge">
+          <b>InstaPay</b>
+          <span><span data-i18n="foot_pay"></span><br>ah2554@instapay</span>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot_links"></h4>
+        <ul class="contact-list">
+          <li><a href="#home" data-i18n="nav_home"></a></li>
+          <li><a href="#products" data-i18n="nav_products"></a></li>
+          <li><a href="#occasions" data-i18n="nav_occasions"></a></li>
+          <li><a href="#visit" data-i18n="nav_visit"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot_contact"></h4>
+        <div class="socials">
+          <a href="https://wa.me/201101185058" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/><path d="M9 9.5c.5 2.5 3 5 5.5 5.5l1-1.5 2 1c-.5 1.5-1.5 2-3 1.5-3-1-6-4-7-7-.5-1.5 0-2.5 1.5-3l1 2z"/></svg></a>
+          <a href="https://www.instagram.com/am01101185058" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="#fff"/></svg></a>
+          <a href="https://www.tiktok.com/@flower.shop32" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 17.5a3 3 0 1 0 3 3V4c.8 2.3 2.6 3.9 5 4.2"/></svg></a>
+          <a href="https://www.facebook.com/share/1H2Bc3UQeT/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5A.5.5 0 0 1 14 8z"/></svg></a>
+          <a href="https://maps.app.goo.gl/CxFvnMWE2iqQfrPHA" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+        </div>
+        <ul class="contact-list" style="margin-top:16px">
+          <li><svg class="icn" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span data-i18n="foot_addr"></span></li>
+          <li><svg class="icn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="foot_hours"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy" data-i18n="foot_copy"></div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><h3 data-i18n="cart_title"></h3><button onclick="toggleCart(false)">✕</button></div>
+  <div class="ship" id="ship"></div>
+  <div class="items" id="cartItems"></div>
+  <div class="df"><div class="row"><span data-i18n="subtotal"></span><b id="sub">0</b></div>
+  <div class="row"><span data-i18n="delivery"></span><b id="del">0</b></div>
+  <div class="row tot"><span data-i18n="total"></span><b id="tot">0</b></div>
+  <a class="btn" id="sendOrder" target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:10px" data-i18n="send_order"></a></div>
+</aside>
+<script src="products.js"></script>
+<script>
+const T = {
+  ar: {
+    tb_addr: 'محور الكفراوي، أمام البنك الأهلي، أول 6 أكتوبر، الجيزة',
+    tb_hours: 'مفتوح ٢٤ ساعة',
+    tb_rating: '5.0 تقييم على جوجل (182 تقييم)',
+    nav_home: 'الرئيسية', nav_products: 'منتجاتنا', nav_occasions: 'مناسبات خاصة', nav_visit: 'زورونا', nav_contact: 'تواصل معنا',
+    hero_title: 'ورد طبيعي <em>يليق بمناسبتك</em>',
+    hero_sub: 'من قلب 6 أكتوبر .. نُهديك أجمل اللحظات. بوكيهات وتنسيقات ورد طبيعي بأعلى جودة، مع توصيل سريع في نفس اليوم.',
+    hero_cta: 'اطلب دلوقتي',
+    chip_rating: '5.0 على جوجل', chip_hours: 'مفتوح ٢٤ ساعة', chip_delivery: 'توصيل نفس اليوم',
+    f1: 'أزهار طبيعية طازجة', f2: 'توصيل سريع', f3: 'تصميم حسب طلبك',
+    cats_title: 'تسوق حسب الفئة', cats_sub: 'كل اللي تحتاجه من ورد وهدايا في مكان واحد',
+    cat1: 'بوكيهات ورد جوري', cat2: 'بوكسات ورد', cat3: 'بوكس شوكليت مع ورد', cat4: 'بوكيهات خطوبة وتخرج', cat5: 'تجهيز عربيات',
+    prods_title: 'منتجات مميزة', prods_sub: 'اختار من أجمل تنسيقاتنا',
+    p1n: 'بوكيه ورد جوري كلاسيك', p2n: 'بوكيه ورد جوري وردي', p3n: 'بوكس ورد فاخر', p4n: 'بوكس شوكليت مع ورد',
+    egp: 'ج.م', order: 'أضف للسلة',
+    visit_title: 'زورونا في محلنا',
+    visit_text: 'نرحب بكم دائماً في محل Royal Flower في قلب 6 أكتوبر، حيث تجدون أجمل وأحدث تصميمات الورد والهدايا.',
+    visit_addr: 'محور الكفراوي، أمام البنك الأهلي، بجوار المعهد العالي للتكنولوجيا، أول 6 أكتوبر، الجيزة',
+    visit_hours: 'مفتوح ٢٤ ساعة، طوال أيام الأسبوع',
+    visit_rating: 'تقييم 5.0 من 182 تقييم على خرائط جوجل',
+    visit_cta: 'اتجه إلى موقعنا على خرائط جوجل',
+    testi_title: 'ماذا يقول عملاؤنا؟', testi_sub: 'ثقتكم هي أجمل شهادة لنا',
+    t1: 'أفضل محل ورد تعاملت معه بجد، شكراً Royal Flower', t1n: 'سارة محمد', t1a: 'م',
+    t2: 'التنسيق رائع والورد طبيعي والخدمة ممتازة', t2n: 'عمرو خالد', t2a: 'ع',
+    t3: 'أجمل ورد في 6 أكتوبر والتوصيل سريع جداً', t3n: 'منى أحمد', t3a: 'م',
+    foot_about: 'أكثر من مجرد ورد .. إنها مشاعر تُهدى. نصنع لك أجمل اللحظات بورد طبيعي طازج كل يوم.',
+    foot_pay: 'الدفع بالانستاباي',
+    foot_links: 'روابط سريعة', foot_contact: 'تواصل معنا',
+    foot_addr: 'محور الكفراوي، أمام البنك الأهلي، أول 6 أكتوبر، الجيزة',
+    foot_hours: 'مفتوح ٢٤ ساعة',
+    foot_copy: '© 2024 Royal Flower. جميع الحقوق محفوظة .. من 6 أكتوبر نزرع السعادة في كل مناسبة',
+    order_msg: 'مرحباً Royal Flower، أريد طلب: ',
+    title: 'Royal Flower | رويال فلاور - Kings of Flowers',
+    offer_bar:'🚚 توصيل مجاني لأي طلب أكثر من 2000 جنيه',
+    o1t:'توصيل مجاني 🚚',o1p:'لأي طلب أكثر من 2000 جنيه مصري داخل 6 أكتوبر والجيزة.',
+    o2t:'بوكيهات مختارة بخصم',o2p:'شوف المنتجات اللي عليها علامة "عرض".',o3t:'تصميم حسب طلبك',o3p:'كلمنا واتساب ونجهزلك بوكيه على ذوقك.',
+    all:'الكل',cart_title:'سلة الطلبات',subtotal:'المجموع',delivery:'التوصيل',total:'الإجمالي',send_order:'إرسال الطلب على واتساب',
+    free:'مجاني',empty:'السلة فاضية',offer_tag:'عرض',
+    ship_more:'أضف بـ {n} ج.م كمان وخد توصيل مجاني!',ship_ok:'🎉 مبروك! توصيلك مجاني',
+    ship_fee:'رسوم التوصيل حسب المنطقة (نحددها على واتساب)'
+  },
+  en: {
+    tb_addr: 'Kafrawy Axis, in front of the National Bank, 1st 6th of October, Giza',
+    tb_hours: 'Open 24 hours',
+    tb_rating: '5.0 on Google (182 reviews)',
+    nav_home: 'Home', nav_products: 'Products', nav_occasions: 'Occasions', nav_visit: 'Visit Us', nav_contact: 'Contact',
+    hero_title: 'Natural flowers <em>worthy of your occasion</em>',
+    hero_sub: 'From the heart of 6th of October City .. we gift you the most beautiful moments. Premium natural-flower bouquets and arrangements with same-day delivery.',
+    hero_cta: 'Order Now',
+    chip_rating: '5.0 on Google', chip_hours: 'Open 24 hours', chip_delivery: 'Same-day delivery',
+    f1: 'Fresh natural flowers', f2: 'Fast delivery', f3: 'Made to your request',
+    cats_title: 'Shop by Category', cats_sub: 'All the flowers and gifts you need in one place',
+    cat1: 'Jouri Rose Bouquets', cat2: 'Flower Boxes', cat3: 'Chocolate & Flower Boxes', cat4: 'Engagement & Graduation', cat5: 'Car Decoration',
+    prods_title: 'Featured Products', prods_sub: 'Choose from our finest arrangements',
+    p1n: 'Classic Jouri Rose Bouquet', p2n: 'Pink Jouri Rose Bouquet', p3n: 'Luxury Flower Box', p4n: 'Chocolate & Flower Box',
+    egp: 'EGP', order: 'Add to Cart',
+    visit_title: 'Visit Our Shop',
+    visit_text: 'You are always welcome at Royal Flower in the heart of 6th of October City, where you will find the newest and most beautiful flower and gift designs.',
+    visit_addr: 'Kafrawy Axis, in front of the National Bank of Egypt, next to the Higher Institute of Technology, 1st 6th of October, Giza',
+    visit_hours: 'Open 24 hours, 7 days a week',
+    visit_rating: 'Rated 5.0 from 182 Google Maps reviews',
+    visit_cta: 'Get directions on Google Maps',
+    testi_title: 'What do our customers say?', testi_sub: 'Your trust is our finest testimonial',
+    t1: 'Truly the best flower shop I have ever dealt with, thank you Royal Flower', t1n: 'Sara M.', t1a: 'S',
+    t2: 'Beautiful arrangement, natural flowers and excellent service', t2n: 'Amr K.', t2a: 'A',
+    t3: 'The most beautiful flowers in 6th of October and very fast delivery', t3n: 'Mona A.', t3a: 'M',
+    foot_about: 'More than just flowers .. they are feelings to be gifted. We craft your happiest moments with fresh natural flowers every day.',
+    foot_pay: 'Pay with InstaPay',
+    foot_links: 'Quick Links', foot_contact: 'Contact Us',
+    foot_addr: 'Kafrawy Axis, in front of the National Bank, 1st 6th of October, Giza',
+    foot_hours: 'Open 24 hours',
+    foot_copy: '© 2024 Royal Flower. All rights reserved .. from 6th of October we plant happiness in every occasion',
+    order_msg: 'Hello Royal Flower, I would like to order: ',
+    title: 'Royal Flower - Kings of Flowers',
+    offer_bar:'🚚 Free delivery on orders over EGP 2000',
+    o1t:'Free delivery 🚚',o1p:'On any order over EGP 2000 in 6th of October & Giza.',
+    o2t:'Selected bouquets on sale',o2p:'Look for the "Offer" badge on products.',o3t:'Made to your taste',o3p:'Message us on WhatsApp and we will design it for you.',
+    all:'All',cart_title:'Your Cart',subtotal:'Subtotal',delivery:'Delivery',total:'Total',send_order:'Send order on WhatsApp',
+    free:'Free',empty:'Your cart is empty',offer_tag:'Offer',
+    ship_more:'Add EGP {n} more for free delivery!',ship_ok:'🎉 You got free delivery!',
+    ship_fee:'Delivery fee depends on your area (confirmed on WhatsApp)'
+  }
+};
+
+let lang = 'ar';
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+  document.getElementById('btnAr').classList.toggle('active', l === 'ar');
+  document.getElementById('btnEn').classList.toggle('active', l === 'en');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (T[l][k] !== undefined) el.textContent = T[l][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (T[l][k] !== undefined) el.innerHTML = T[l][k];
+  });
+  document.title = T[l].title;
+}
+
+let cart={},curCat='__all';
+const L=()=>T[lang], fmt=n=>n.toLocaleString(lang==='ar'?'ar-EG':'en-US');
+const pname=p=>lang==='ar'?p.ar:(p.en||p.ar);
+function renderFilters(){
+  const cats=[...new Set(PRODUCTS.map(p=>p.cat))];
+  document.getElementById('filters').innerHTML=['__all',...cats].map(c=>`<button class="${c===curCat?'on':''}" data-c="${c}">${c==='__all'?L().all:c}</button>`).join('');
+  document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{curCat=b.dataset.c;renderFilters();renderProducts()});
+}
+function renderProducts(){
+  document.getElementById('prodGrid').innerHTML=PRODUCTS.map((p,i)=>({p,i})).filter(x=>curCat==='__all'||x.p.cat===curCat).map(({p,i})=>`
+  <div class="prod">${p.old?`<span class="badge">${L().offer_tag}</span>`:''}<img src="${p.img}" alt="${pname(p)}" loading="lazy">
+  <div class="body"><div class="name">${pname(p)}</div>
+  <div class="price">${fmt(p.price)} ${L().egp}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>
+  <button class="btn order" onclick="addCart(${i})">${L().order}</button></div></div>`).join('');
+}
+function addCart(i){cart[i]=(cart[i]||0)+1;renderCart();toggleCart(true)}
+function chg(i,d){cart[i]=(cart[i]||0)+d;if(cart[i]<=0)delete cart[i];renderCart()}
+function toggleCart(o){document.getElementById('drawer').classList.toggle('on',o);document.getElementById('overlay').classList.toggle('on',o)}
+function renderCart(){
+  const ids=Object.keys(cart);let sub=0,cnt=0;
+  document.getElementById('cartItems').innerHTML=ids.length?ids.map(i=>{const p=PRODUCTS[i],q=cart[i];sub+=p.price*q;cnt+=q;
+    return `<div class="it"><img src="${p.img}" alt=""><div class="n">${pname(p)}<div style="color:var(--pink)">${fmt(p.price*q)} ${L().egp}</div></div><div class="q"><button onclick="chg(${i},-1)">−</button><b>${q}</b><button onclick="chg(${i},1)">+</button></div></div>`}).join(''):`<p style="text-align:center;padding:40px 0;color:#9aa0b8">${L().empty}</p>`;
+  const free=sub>FREE_SHIP_FROM, left=FREE_SHIP_FROM-sub+1;
+  document.getElementById('ship').innerHTML=(free?L().ship_ok:L().ship_more.replace('{n}',fmt(Math.max(left,0))))+`<div class="bar"><i style="width:${Math.min(100,sub/FREE_SHIP_FROM*100)}%"></i></div>`;
+  document.getElementById('cartCount').textContent=cnt;
+  document.getElementById('sub').textContent=fmt(sub)+' '+L().egp;
+  document.getElementById('del').textContent=!ids.length?'-':free?L().free:L().ship_fee.split(' (')[0];
+  document.getElementById('tot').textContent=fmt(sub)+' '+L().egp;
+  const lines=ids.map(i=>`• ${pname(PRODUCTS[i])} × ${cart[i]} = ${PRODUCTS[i].price*cart[i]} ${L().egp}`).join('\n');
+  const msg=L().order_msg+'\n'+lines+'\n\n'+L().total+': '+sub+' '+L().egp+' ('+(free?L().free:L().delivery+'?')+')';
+  const a=document.getElementById('sendOrder');a.href=ids.length?'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg):'#';
+}
+const _setLang=setLang;
+setLang=function(l){_setLang(l);renderFilters();renderProducts();renderCart()};
+setLang('ar');
+fetch('/api/products').then(r=>r.ok?r.json():[]).then(l=>{if(Array.isArray(l)&&l.length){PRODUCTS=l;cart={};curCat='__all';setLang(lang)}}).catch(()=>{});
+</script>
+</body>
+</html>
